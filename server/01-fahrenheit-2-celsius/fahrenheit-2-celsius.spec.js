@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-unused-vars
 const { fahrenheitToCelsius } = require('./fahrenheit-2-celsius');
-const {sumNumbers} = require('./fahrenheit-2-celsius')
 
 // DESCRIBE: creates a block that groups together several related tests in one "test suite"
 // IT: takes two arguments. The first arguments describes the test; the second argument that contains
@@ -24,11 +23,3 @@ describe('a fahrenheitToCelsius function should', () => {
   it.todo('return -273.15 for -459.67');
 });
 
-
-describe('Sum of two numbers',() =>{
-  it('return 63 for 31 + 32',()=>{
-    expect(sumNumbers(31 + 32)).toBe(63) ;
-  });
-
-
-});
