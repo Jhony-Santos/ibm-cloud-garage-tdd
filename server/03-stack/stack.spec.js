@@ -9,10 +9,16 @@ describe('the stack canary spec', () => {
 
 const  stackFactory = () => {
   let empty=true
+  let count=0
+
   return {
     isEmpty:() => empty,
-    size:() => 0,
-    push:() => {empty=false}
+    size:() => count,
+    push:() => {
+      empty=false;
+      count+=1
+
+    }
   }
 }
 
@@ -24,17 +30,23 @@ describe('a stack', () => {
   //behavior of functions
 
   it('starts empty',()=>{
-    expect(stack.isEmpty()).toBe(true);// start empty
+    stack=stackFactory()
+    expect(stack.isEmpty()).toBe(true);
   })
   it('starts with stack size of 0',()=>{
+    stack=stackFactory()
     expect(stack.size()).toBe(0);
   })
   it('is not emptty when pushed',()=>{
+    stack=stackFactory()
     stack.push()
     expect(stack.isEmpty()).toBe(false)
   })
-
-
+  it('stack size is 1 when pushed',()=>{
+    stack=stackFactory()
+    stack.push()
+    expect(stack.size()).toBe(1)
+  })
   it.todo('starts empty');
   it.todo('starts with stack size of 0');
   it.todo('is not empty when pushed');
