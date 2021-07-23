@@ -17,8 +17,8 @@ const  stackFactory = () => {
     push:() => {
       empty=false;
       count+=1
-
-    }
+    },
+    pop:() => {empty=true}
   }
 }
 
@@ -46,6 +46,11 @@ describe('a stack', () => {
     stack=stackFactory()
     stack.push()
     expect(stack.size()).toBe(1)
+  })
+  it('stack is empty when pushed and popped',()=>{
+    stack.push()
+    stack.pop()
+    expect(stack.isEmpty()).toBe(true)
   })
   it.todo('starts empty');
   it.todo('starts with stack size of 0');
