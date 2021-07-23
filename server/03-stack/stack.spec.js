@@ -7,10 +7,16 @@ describe('the stack canary spec', () => {
   });
 });
 
-let stack={
-  isEmpty:()=>true,
-  size:()=>0
+const  stackFactory = () =>{
+  let empty=true
+  return {
+    isEmpty:() => empty,
+    size:() => 0,
+    push:() => {empty=false}
+  }
 }
+
+let stack=stackFactory()
 
 
 describe('a stack', () => {
