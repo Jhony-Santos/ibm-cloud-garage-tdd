@@ -7,7 +7,7 @@ describe('the stack canary spec', () => {
   });
 });
 
-const  stackFactory = () =>{
+const  stackFactory = () => {
   let empty=true
   return {
     isEmpty:() => empty,
@@ -29,6 +29,11 @@ describe('a stack', () => {
   it('starts with stack size of 0',()=>{
     expect(stack.size()).toBe(0);
   })
+  it('is not emptty when pushed',()=>{
+    stack.push()
+    expect(stack.isEmpty()).toBe(false)
+  })
+
 
   it.todo('starts empty');
   it.todo('starts with stack size of 0');
