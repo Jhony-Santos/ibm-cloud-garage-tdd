@@ -1,10 +1,27 @@
+
+
+
 describe('the stack canary spec', () => {
   it('shows the infrastructure works', () => {
     expect(true).toBe(true);
   });
 });
 
+let stack={
+  isEmpty:()=>true
+}
+
+
+
+
 describe('a stack', () => {
+  //functions
+  //behavior of functions
+
+  it('',()=>{
+    expect(stack.isEmpty()).toBe(true);// start empty
+  })
+
   it.todo('starts empty');
   it.todo('starts with stack size of 0');
   it.todo('is not empty when pushed');
