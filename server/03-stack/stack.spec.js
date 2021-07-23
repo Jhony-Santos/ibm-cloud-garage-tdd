@@ -8,18 +8,20 @@ describe('the stack canary spec', () => {
 });
 
 let stack={
-  isEmpty:()=>true
+  isEmpty:()=>true,
+  size:()=>0
 }
-
-
 
 
 describe('a stack', () => {
   //functions
   //behavior of functions
 
-  it('',()=>{
+  it('starts empty',()=>{
     expect(stack.isEmpty()).toBe(true);// start empty
+  })
+  it('starts with stack size of 0',()=>{
+    expect(stack.size()).toBe(0);
   })
 
   it.todo('starts empty');
