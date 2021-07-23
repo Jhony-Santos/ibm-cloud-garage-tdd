@@ -37,7 +37,7 @@ describe('a stack', () => {
     stack=stackFactory()
     expect(stack.size()).toBe(0);
   })
-  it('is not emptty when pushed',()=>{
+  it('is not empty when pushed',()=>{
     stack=stackFactory()
     stack.push()
     expect(stack.isEmpty()).toBe(false)
