@@ -7,26 +7,23 @@ describe('the stack canary spec', () => {
   });
 });
 
-const  stackFactory = () => {
-  let empty=true
-  let count=0
+const stackFactory = () => {
+   let count=0
 
   return {
-    isEmpty:() => empty,
+    isEmpty:() => count === 0,
     size:() => count,
     push:() => {
-      empty=false;
-      count+=1
+       if(count===2) throw new Error ('capacity overflow error')
+       count+=1
     },
-    pop:() => {
-      empty=true
-      count-=1
-
+    pop:() =>{
+        count -= 1
     }
   }
 }
 
-let stack=stackFactory()
+let stack
 
 
 describe('a stack', () => {
@@ -52,10 +49,19 @@ describe('a stack', () => {
     expect(stack.size()).toBe(1)
   })
   it('stack is empty when pushed and popped',()=>{
+    stack=stackFactory()
     stack.push()
     stack.pop()
-    expect(stack.isEmpty()).toBe(true)
+    expect(stack.size()).toBe(0)
   })
+  it('throws overflow error when pushing to a stack at full capacity',()=>{
+      stack.push()
+      stack.push()
+      expect(()=>{
+          stack.push()
+      }).toThrowError('capacity overflow error')
+  })
+
   it.todo('starts empty');
   it.todo('starts with stack size of 0');
   it.todo('is not empty when pushed');
