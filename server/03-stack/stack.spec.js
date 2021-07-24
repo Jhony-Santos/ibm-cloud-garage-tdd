@@ -49,7 +49,7 @@ describe('a stack', () => {
     expect(stack.size()).toBe(1);
   });
   it('stack is empty when pushed and popped',()=>{
-    stack=stackFactory()
+    stack=stackFactory();
     stack.push();
     stack.pop();
     expect(stack.size()).toBe(0);
