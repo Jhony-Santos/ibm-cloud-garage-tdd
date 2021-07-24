@@ -18,7 +18,11 @@ const  stackFactory = () => {
       empty=false;
       count+=1
     },
-    pop:() => {empty=true}
+    pop:() => {
+      empty=true
+      count-=1
+
+    }
   }
 }
 
