@@ -8,21 +8,21 @@ describe('the stack canary spec', () => {
 });
 
 const stackFactory = () => {
-   let count=0
+  let count = 0;
 
   return {
-    isEmpty:() => count === 0,
-    size:() => count,
-    push:() => {
-       if(count===2) throw new Error ('capacity overflow error')
-       count+=1
+    isEmpty: () => count === 0,
+    size: () => count,
+    push: () => {
+      if (count === 2) throw new Error('capacity overflow error');
+      count += 1;
     },
-    pop:() =>{
-        count -= 1
+    pop: () => {
+      if (count === 0) throw new Error('capacity underflow error');
+      count -= 1;
     }
   }
-}
-
+};
 let stack
 
 
@@ -31,36 +31,43 @@ describe('a stack', () => {
   //behavior of functions
 
   it('starts empty',()=>{
-    stack=stackFactory()
+    stack=stackFactory();
     expect(stack.isEmpty()).toBe(true);
-  })
+  });
   it('starts with stack size of 0',()=>{
-    stack=stackFactory()
+    stack=stackFactory();
     expect(stack.size()).toBe(0);
-  })
+  });
   it('is not empty when pushed',()=>{
-    stack=stackFactory()
-    stack.push()
-    expect(stack.isEmpty()).toBe(false)
-  })
+    stack=stackFactory();
+    stack.push();
+    expect(stack.isEmpty()).toBe(false);
+  });
   it('stack size is 1 when pushed',()=>{
-    stack=stackFactory()
-    stack.push()
-    expect(stack.size()).toBe(1)
-  })
+    stack=stackFactory();
+    stack.push();
+    expect(stack.size()).toBe(1);
+  });
   it('stack is empty when pushed and popped',()=>{
     stack=stackFactory()
-    stack.push()
-    stack.pop()
-    expect(stack.size()).toBe(0)
-  })
+    stack.push();
+    stack.pop();
+    expect(stack.size()).toBe(0);
+  });
   it('throws overflow error when pushing to a stack at full capacity',()=>{
-      stack.push()
-      stack.push()
+      stack.push();
+      stack.push();
       expect(()=>{
-          stack.push()
-      }).toThrowError('capacity overflow error')
-  })
+          stack.push();
+      }).toThrowError('capacity overflow error');
+  });
+  it('throw underflow error when popping an empty stack', () => {
+    expect(() => {
+      stack=stackFactory();
+      stack.pop();
+    }).toThrowError('capacity underflow error');
+  });
+
 
   it.todo('starts empty');
   it.todo('starts with stack size of 0');
