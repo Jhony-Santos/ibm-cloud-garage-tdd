@@ -9,20 +9,20 @@ describe('the stack canary spec', () => {
 
 const stackFactory = () => {
   let count = 0;
-  let element
+  let elements=[]
 
   return {
-    isEmpty: () => count === 0,
-    size: () => count,
+    isEmpty: () => elements.length === 0,
+    size: () => elements.length,
     push: (ele) => {
       if (count === 2) throw new Error('capacity overflow error');
       count += 1;
-      element=ele
+      elements.push(ele)
     },
     pop: () => {
       if (count === 0) throw new Error('capacity underflow error');
       count -= 1;
-      return element
+      return elements.pop()
     }
   }
 };
@@ -74,6 +74,13 @@ describe('a stack', () => {
       stack.push('a')
       expect(stack.pop()).toBe('a')
   })
+   it('pops two itens with the most recent first',()=>{
+       stack.push('1')
+       stack.push('2')
+        expect(stack.pop()).toBe('2')
+        expect(stack.pop()).toBe('1')
+   })
+
 
 
   it.todo('starts empty');
